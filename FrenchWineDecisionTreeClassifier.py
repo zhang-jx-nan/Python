@@ -2,9 +2,9 @@
 """
 利用决策树算法进行分类
 作者：张健兴
-日期：2019 12 14
+日期：2019 12 15
 """
-import pandas as pd   # 调入需要用的库
+import pandas as pd           # 调入需要用的库
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
@@ -65,6 +65,14 @@ print(decision_tree_classifier.score(X_test, Y_test))
 
 # 使用训练的模型进行预测，为了方便，
 # 案例直接把测试集里面的数据拿出来三条
-print(X_test[0:3])#利用3个数据进行测试，即取3个数据作为模型的输入端
-model.predict(X_test[0:3])
-print(model.predict(X_test[0:3]))#输出测试的结果，即输出模型预测的结果
+X_test_new=[(13.52,3.17,2.72,23.5,97),( 12.42,2.55,2.27,22,90),( 13.76,1.53,2.7,19.5,132)]#利用3个数据进行测试，即取3个数据作为模型的输入端
+print(X_test_new[0:3])
+m=model.predict(X_test_new[0:3]).tolist()
+for i in range(len(m)):
+	if m[i]=="Zinfandel":
+		m[i]="仙粉黛"
+	elif m[i]=="Syrah":
+		m[i]="西拉"
+	elif m[i]=="Sauvignon":
+		m[i]="赤霞珠"
+print(m)
